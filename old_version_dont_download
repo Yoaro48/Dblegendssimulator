@@ -1,0 +1,73 @@
+import math 
+from random import Random, randint, random, randrange, uniform
+
+from time import time,sleep
+class Ruleta():
+    gravity = 9.8
+    def Premios(self,numero:float,times):
+        while len(Ruleta.result) < times:
+            if numero < 0.5:
+                Ruleta.result.append("L")        
+                break
+            elif numero < 5.5 and numero > 0.5:
+                Ruleta.result.append("E")
+                break
+            elif numero < 30.5 and numero > 5.5:
+                Ruleta.result.append("R")
+                break
+            elif numero < 99.99 and numero > 30.5:
+                Ruleta.result.append("C")
+                break
+        if len(Ruleta.result) == times:
+            cc = Ruleta.result.count("C")
+            cr = Ruleta.result.count("R")
+            ce = Ruleta.result.count("E")
+            cl = Ruleta.result.count("L")
+                
+            for _ in range (Ruleta.result.count("C")):
+                    ic = Ruleta.result.index("C")
+                    Ruleta.result.pop(ic)
+ 
+            for _ in range (Ruleta.result.count("R")):
+
+                    ir = Ruleta.result.index("R")
+                    Ruleta.result.pop(ir)
+
+            for _ in range (Ruleta.result.count("E")):
+                    ie = Ruleta.result.index("E")
+                    Ruleta.result.pop(ie)
+                    
+            for _ in range (Ruleta.result.count("L")):
+                    il = Ruleta.result.index("L")
+                    Ruleta.result.pop(il)
+
+            else:
+                    print ("You got "+str(cc)+ " Common,","You got "+ str(cr) + " Rare,","You got "+str(ce)+ " Epic!!,","You got "+str(cl) + " !/Legenaries/!.")
+
+
+    def __init__(self):
+        pass
+    
+    def inicio(self):
+        Ruleta.result = []
+        print("How many times you wanna play?")
+        times = int(input())
+        self.ruleta_epica(times)
+
+    def truncate(number: float, max_decimals: int):
+        int_part, dec_part = str(number).split(".")
+        return float(".".join((int_part, dec_part[:max_decimals])))
+    
+    def ruleta_epica(self,times):
+        for i in range(times):
+            a = (uniform(0,99.99))
+            sleep(0.1)
+            a = Ruleta.truncate(a,2)
+            self.Premios(a,times)
+
+        
+
+
+Player = Ruleta()
+Goku_MUI_Banner = Ruleta()
+Goku_MUI_Banner.inicio()
